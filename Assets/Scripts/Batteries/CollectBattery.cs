@@ -8,7 +8,7 @@ public class CollectBattery : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             ScoreManager.instance.ChangeScore(batteryValue);
             gameObject.SetActive(false);
