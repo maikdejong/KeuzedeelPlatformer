@@ -6,73 +6,76 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-    private Rigidbody2D body;
-    private BoxCollider2D boxCollider;
-    private float wallJumpCooldown;
-    private float horizontalInput;
+    private Rigidbody2D _body;
+    private BoxCollider2D _boxCollider;
+    private float _wallJumpCooldown;
+    private float _horizontalInput;
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        _body = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        _horizontalInput = Input.GetAxis("Horizontal");
 
-        if(horizontalInput > 0.01f)
+        if(_horizontalInput > 0.01f)
             transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
-        else if(horizontalInput < -0.01f)
+        else if(_horizontalInput < -0.01f)
             transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
         
         // Wall jump logic
-        if(wallJumpCooldown > 0.2f)
+        if(_wallJumpCooldown > 0.2f)
         {
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+            _body.velocity = new Vector2(_horizontalInput * speed, _body.velocity.y);
 
-            if(onWall() && !isGrounded())
+            if(OnWall() && !IsGrounded())
             {
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
+                _body.gravityScale = 0;
+                _body.velocity = Vector2.zero;
             }
             else
-                body.gravityScale = 7;
+                _body.gravityScale = 7;
 
             if(Input.GetKey(KeyCode.UpArrow))
                 Jump();
         }
         else
-            wallJumpCooldown += Time.deltaTime;
+            _wallJumpCooldown += Time.deltaTime;
     }
 
     private void Jump()
     {
-        if(isGrounded())
+        if(IsGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
+            _body.velocity = new Vector2(_body.velocity.x, jumpPower);
         }
-        else if(onWall() && !isGrounded())
+        else if(OnWall() && !IsGrounded())
         {
-            if(horizontalInput == 0)
+            if(_horizontalInput == 0)
             {
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x) * (float)1.5,
-                    transform.localScale.y,
-                    transform.localScale.z);
+                var localScale = transform.localScale;
+                _body.velocity = new Vector2(-Mathf.Sign(localScale.x) * 10, 0);
+                localScale = new Vector3(-Mathf.Sign(localScale.x) * (float)1.5,
+                    localScale.y,
+                    localScale.z);
+                transform.localScale = localScale;
             }
             else
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+                _body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
 
-            wallJumpCooldown = 0;
+            _wallJumpCooldown = 0;
         }
     }
 
-    private bool isGrounded()
+    private bool IsGrounded()
     {
+        var bounds = _boxCollider.bounds;
         RaycastHit2D raycastHit = Physics2D.BoxCast(
-            boxCollider.bounds.center,
-            boxCollider.bounds.size,
+            bounds.center,
+            bounds.size,
             0,
             Vector2.down,
             0.1f,
@@ -80,11 +83,12 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    private bool onWall()
+    private bool OnWall()
     {
+        var bounds = _boxCollider.bounds;
         RaycastHit2D raycastHit = Physics2D.BoxCast(
-            boxCollider.bounds.center,
-            boxCollider.bounds.size,
+            bounds.center,
+            bounds.size,
             0,
             new Vector2(transform.localScale.x, 0),
             0.1f,

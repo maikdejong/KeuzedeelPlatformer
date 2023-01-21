@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+   public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(sceneIndex + 1, LoadSceneMode.Single);
         }
     }
 }

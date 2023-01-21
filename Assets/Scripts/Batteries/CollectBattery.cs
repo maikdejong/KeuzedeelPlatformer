@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectBattery : MonoBehaviour
+namespace Batteries
 {
-    [SerializeField] private int batteryValue;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class CollectBattery : MonoBehaviour
     {
-        if (collision.CompareTag("Player"))
+        [SerializeField] private int batteryValue;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            ScoreManager.instance.ChangeScore(batteryValue);
-            gameObject.SetActive(false);
+            if (collision.CompareTag("Player"))
+            {
+                ScoreManager.Instance.ChangeScore(batteryValue);
+                gameObject.SetActive(false);
+            }
         }
     }
 }

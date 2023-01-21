@@ -3,34 +3,34 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
+    public static ScoreManager Instance;
     public TextMeshProUGUI text;
-    int score;
-    private GameObject _Portal;
+    int _score;
+    private GameObject _portal;
     
     void Start()
     {
-        _Portal = GameObject.Find("Portal");
-        _Portal.SetActive(false);
+        _portal = GameObject.Find("Portal");
+        _portal.SetActive(false);
         
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
 
-    void spawnPortal()
+    void SpawnPortal()
     {
-        if (score == 3)
+        if (_score == 3)
         {
-            _Portal.SetActive(true);
+            _portal.SetActive(true);
         }
     }
 
     public void ChangeScore(int batteryValue)
     {
-        score += batteryValue;
-        text.text = score.ToString() + " / 3";
-        spawnPortal();
+        _score += batteryValue;
+        text.text = _score.ToString() + " / 3";
+        SpawnPortal();
     }
 }
