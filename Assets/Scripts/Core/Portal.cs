@@ -9,6 +9,7 @@ public class Portal : MonoBehaviour
         {
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(sceneIndex + 1, LoadSceneMode.Single);
+            collision.gameObject.GetComponent<Transform>().position = new Vector3(-6, 3, 0);
         }
     }
 }

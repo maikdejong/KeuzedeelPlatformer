@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        DestroyAllDontDestroyOnLoadObjects();
         SceneManager.LoadScene(0);
     }
 
@@ -17,5 +18,14 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+    
+    private void DestroyAllDontDestroyOnLoadObjects() {
+
+        var go = new GameObject("Sacrificial Lamb");
+        DontDestroyOnLoad(go);
+
+        foreach(var root in go.scene.GetRootGameObjects())
+            Destroy(root);
     }
 }
