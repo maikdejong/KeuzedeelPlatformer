@@ -16,11 +16,11 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            //player hurt
+            // "HURT" player respawnt naar begin level
         }
         else
         {
-            //player dede
+            // "DEAD" player komt in doodmenu (zelfde als finishmenu, maar dan niet finished)
         }
     }
 
