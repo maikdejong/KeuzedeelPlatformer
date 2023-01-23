@@ -23,10 +23,4 @@ public class HealthSystem : MonoBehaviour
             // "DEAD" player komt in doodmenu (zelfde als finishmenu, maar dan niet finished)
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            TakeDamage(1);
-    }
 }
