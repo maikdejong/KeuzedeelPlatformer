@@ -7,7 +7,6 @@ TagManager:
   - Battery
   - Portal
   - Health
-  - pietje
   layers:
   - Default
   - TransparentFX

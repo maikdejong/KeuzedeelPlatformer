@@ -1,26 +1,51 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
-    public float currentHealth { get; private set; }
+    public float CurrentHealth { get; private set; }
+
+    [SerializeField] float iFramesDuration;
+    [SerializeField] int numberOfFlashes;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
-        currentHealth = startingHealth;
+        CurrentHealth = startingHealth;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth - _damage, 0, startingHealth);
 
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
-            // "HURT" player respawnt naar begin level
+            StartCoroutine(Invulnerability());
         }
         else
         {
-            // "DEAD" player komt in doodmenu (zelfde als finishmenu, maar dan niet finished)
+            GetComponent<PlayerMovement>().enabled = false;
+            _spriteRenderer.color = new Color(1, 0, 0);
         }
+    }
+    
+    public void AddHealth(float healthValue)
+    {
+        CurrentHealth = Mathf.Clamp(CurrentHealth + healthValue, 0, startingHealth);
+    }
+    
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(9,10, true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            _spriteRenderer.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes) / 4);
+            _spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes) / 4);
+        }
+        Physics2D.IgnoreLayerCollision(9,10, false);
     }
 }
