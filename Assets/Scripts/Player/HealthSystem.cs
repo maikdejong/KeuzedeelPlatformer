@@ -65,3 +65,4 @@ public class HealthSystem : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 }
+ 
