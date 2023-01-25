@@ -50,4 +50,25 @@ public class PlayerMovement : MonoBehaviour
             groundLayer);
         return raycastHit.collider != null;
     }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.CompareTag("Jumpboost"))
+         {
+             Destroy(collision.gameObject);
+             if (jumpPower != 30f)
+                 jumpPower = 30f;
+             else
+                 jumpPower = 15f;
+         }
+         
+         if (collision.CompareTag("Speedboost"))
+         {
+             Destroy(collision.gameObject);
+             if (speed != 20f)
+                 speed = 20f;
+             else
+                 speed = 10f;
+         }
+     }
 }

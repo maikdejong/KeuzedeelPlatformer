@@ -31,7 +31,7 @@ public class HealthSystem : MonoBehaviour
 
         if (CurrentHealth > 0)
         {
-            StartCoroutine(Invulnerability());
+            StartCoroutine(InvulnerabilityAfterDamage());
         }
         else
         {
@@ -51,7 +51,7 @@ public class HealthSystem : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth + healthValue, 0, startingHealth);
     }
 
-    private IEnumerator Invulnerability()
+    private IEnumerator InvulnerabilityAfterDamage()
     {
         Physics2D.IgnoreLayerCollision(9, 10, true);
         for (int i = 0; i < numberOfFlashes; i++)
