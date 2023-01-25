@@ -56,8 +56,8 @@ public class PlayerMovement : MonoBehaviour
          if (collision.CompareTag("Jumpboost"))
          {
              Destroy(collision.gameObject);
-             if (jumpPower != 30f)
-                 jumpPower = 30f;
+             if (jumpPower != 25f)
+                 jumpPower = 25f;
              else
                  jumpPower = 15f;
          }
@@ -65,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
          if (collision.CompareTag("Speedboost"))
          {
              Destroy(collision.gameObject);
-             if (speed != 20f)
-                 speed = 20f;
+             if (speed != 16f)
+                 speed = 16f;
              else
                  speed = 10f;
          }
