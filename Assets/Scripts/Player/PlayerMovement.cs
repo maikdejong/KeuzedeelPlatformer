@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
     
+    // POWERUPS
     private void OnTriggerEnter2D(Collider2D collision)
      {
          if (collision.CompareTag("Jumpboost"))
