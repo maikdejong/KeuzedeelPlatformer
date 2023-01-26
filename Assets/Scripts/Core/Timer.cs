@@ -31,8 +31,17 @@ public class Timer : MonoBehaviour
         }
     }
 
-    private void ChangeTimer(float TimeLeft)
+    private void ChangeTimer(float currentTime)
     {
-        TimerText.text = TimeLeft.ToString();
+        currentTime += 1;
+
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        if (TimeLeft > 0)
+        {
+            TimerText.text = string.Format("{0:00}", seconds);
+        }
+        else
+            TimerText.text = "Time's up!";
     }
 }
