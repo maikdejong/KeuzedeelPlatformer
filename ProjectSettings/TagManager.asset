@@ -9,6 +9,7 @@ TagManager:
   - Health
   - Jumpboost
   - Speedboost
+  - WorldEdge
   layers:
   - Default
   - TransparentFX
