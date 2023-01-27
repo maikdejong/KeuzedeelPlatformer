@@ -3,8 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private float respawnDamage;
+    private GameObject Player;
+    private Timer Timer;
     
+    private float respawnDamage = 1;
+    private HealthSystem health;
+
+    private void Awake()
+    {
+        Player = GameObject.Find("Player");
+        Timer = GameObject.Find("Timer").GetComponent<Timer>();
+        health = GameObject.Find("Player").GetComponent<HealthSystem>();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -18,7 +29,9 @@ public class MainMenu : MonoBehaviour
 
     public void Respawn()
     {
-        gameObject.GetComponent<Transform>().position = new Vector3(-6, 3, 0);
+        Player.GetComponent<Transform>().position = new Vector3(23, 3, 0);
+        SceneManager.UnloadSceneAsync("TimeUp");
+        health.TakeDamage(respawnDamage);
     }
     
     public void QuitGame()
