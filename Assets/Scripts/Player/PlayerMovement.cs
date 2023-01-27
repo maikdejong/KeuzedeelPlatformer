@@ -54,6 +54,12 @@ public class PlayerMovement : MonoBehaviour
     // POWERUPS
     private void OnTriggerEnter2D(Collider2D collision)
      {
+         if (collision.CompareTag("Portal"))
+         {
+             jumpPower = 15f;
+             speed = 10f;
+         }
+         
          if (collision.CompareTag("Jumpboost"))
          {
              Destroy(collision.gameObject);

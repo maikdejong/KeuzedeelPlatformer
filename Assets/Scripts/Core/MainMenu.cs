@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private float respawnDamage;
+    
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -14,6 +16,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Respawn()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameObject.GetComponent<Transform>().position = new Vector3(-6, 3, 0);
+    }
+    
     public void QuitGame()
     {
         Debug.Log("QUIT");
