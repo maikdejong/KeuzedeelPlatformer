@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1ff83a838cfab1340a92ef398792a877
+  - enabled: 1
+    path: Assets/Scenes/TimeUp.unity
+    guid: 381271c81ce9a90479ea0af9967ceee9
   m_configObjects: {}
