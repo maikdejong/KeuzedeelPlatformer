@@ -18,8 +18,6 @@ public class MainMenu : MonoBehaviour
 
     public void Respawn()
     {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameObject.GetComponent<Transform>().position = new Vector3(-6, 3, 0);
     }
     
