@@ -9,13 +9,11 @@ public class Timer : MonoBehaviour
 
     public Text TimerText;
 
-    private PlayerMovement PlayerMovement;
-    private Rigidbody2D PlayerRigid;
+    public PlayerMovement PlayerMovement;
+    public Rigidbody2D PlayerRigid;
 
     private void Start()
     {
-        PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        PlayerRigid = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         TimerOn = true;
     }
 
@@ -42,7 +40,8 @@ public class Timer : MonoBehaviour
         currentTime += 1f;
 
         float seconds = Mathf.FloorToInt(currentTime % 60f);
-
+        
+        
         if (TimeLeft > 0f)
         {
             TimerText.text = string.Format("{0:00}", seconds);
@@ -50,8 +49,8 @@ public class Timer : MonoBehaviour
         else
         {
             TimerText.text = "Time's up!";
-            PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            PlayerMovement.enabled = false;
+            //PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            //PlayerMovement.enabled = false;
             SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);
         }
     }

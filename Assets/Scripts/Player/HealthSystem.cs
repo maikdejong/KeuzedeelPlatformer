@@ -12,7 +12,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] int numberOfFlashes;
     private SpriteRenderer _spriteRenderer;
 
-    private bool _alive;
+    public bool _alive;
     private bool _isGameOver;
 
     public Sprite DeadSprite;
