@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instantiate(Player);
+        Player = GameObject.FindWithTag("Player");
         
         PlayerMovement = Player.GetComponent<PlayerMovement>();
         PlayerRigid = Player.GetComponent<Rigidbody2D>();
@@ -42,21 +43,11 @@ public class GameController : MonoBehaviour
         Timer.PlayerRigid = PlayerRigid;
     }
 
-    private void Update()
-    {
-        Debug.Log(Player.transform.position);
-    }
-
-
     private void CameraSetup()
     {
-        Transform PT = GameObject.FindWithTag("Player").transform;
         
         CineMachine = GameObject.Find("CM").GetComponent<CinemachineVirtualCamera>();
-        CineMachine.Follow = PT;
-        CineMachine.LookAt = PT;
-        
-        
+        CineMachine.Follow = Player.transform;
     }
     
     public void Respawn()

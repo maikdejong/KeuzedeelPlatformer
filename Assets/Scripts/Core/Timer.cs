@@ -49,8 +49,8 @@ public class Timer : MonoBehaviour
         else
         {
             TimerText.text = "Time's up!";
-            //PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            //PlayerMovement.enabled = false;
+            PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            PlayerMovement.enabled = false;
             SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);
         }
     }
