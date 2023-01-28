@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
         PlayerRigid = Player.GetComponent<Rigidbody2D>();
         health = Player.GetComponent<HealthSystem>();
         
+        CameraSetup();
+        
         PlayerRigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         PlayerMovement.enabled = true;
         
@@ -38,11 +40,22 @@ public class GameController : MonoBehaviour
         Timer = GameObject.Find("Timer").GetComponent<Timer>();
         Timer.PlayerMovement = PlayerMovement;
         Timer.PlayerRigid = PlayerRigid;
+    }
 
+    private void Update()
+    {
+        Debug.Log(Player.transform.position);
+    }
+
+
+    private void CameraSetup()
+    {
+        Transform PT = GameObject.FindWithTag("Player").transform;
+        
         CineMachine = GameObject.Find("CM").GetComponent<CinemachineVirtualCamera>();
-        CineMachine.Follow = Player.transform;
-        CineMachine.LookAt = Player.transform;
-
+        CineMachine.Follow = PT;
+        CineMachine.LookAt = PT;
+        
         
     }
     
