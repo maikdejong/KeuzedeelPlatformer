@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 333022783}
   - component: {fileID: 333022784}
+  - component: {fileID: 333022785}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: TimeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,6 +176,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff77e755351827c4793235f8f755eb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &333022785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333022782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69604783ee260274d994ef7ebddbc1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Healthbar: {fileID: 0}
 --- !u!1 &396789050
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,8 +773,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 333022784}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 333022785}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: Respawn
         m_Mode: 1
         m_Arguments:

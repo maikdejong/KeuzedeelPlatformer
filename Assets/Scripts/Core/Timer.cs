@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
 
     public Text TimerText;
 
+    public HealthSystem HS;
+
     public PlayerMovement PlayerMovement;
     public Rigidbody2D PlayerRigid;
 
@@ -51,7 +53,10 @@ public class Timer : MonoBehaviour
             TimerText.text = "Time's up!";
             PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
             PlayerMovement.enabled = false;
-            SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);
+            if (HS._alive)
+            {
+                SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);
+            }
         }
     }
 }
