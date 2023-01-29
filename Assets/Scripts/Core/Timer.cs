@@ -11,14 +11,10 @@ public class Timer : MonoBehaviour
 
     public HealthSystem HS;
 
-    public GameObject Player;
-    public GameObject MainCamera;
-
     private void Start()
     {
-        Player = GameObject.FindWithTag("Player");
-        MainCamera = GameObject.Find("Main Camera");
         TimerOn = true;
+        Time.timeScale = 1;
     }
 
     private void FixedUpdate()

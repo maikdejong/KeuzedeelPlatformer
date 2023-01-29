@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -39,12 +40,18 @@ public class GameController : MonoBehaviour
         CineMachine.Follow = Player.transform;
     }
 
-    public void RespawnHelper()
+    public bool RespawnHelper()
     {
+        if (health.CurrentHealth <= 1)
+        {
+            SceneManager.LoadScene("Menu");
+            return true;
+        }
         health.TakeDamage(respawnDamage);
         PlayerMovement.jumpPower = 15f;
         PlayerMovement.speed = 10f;
         
         PlayerPrefs.SetFloat("HP", health.CurrentHealth);
+        return false;
     }
 }

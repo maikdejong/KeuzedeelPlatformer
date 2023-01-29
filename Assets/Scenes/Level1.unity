@@ -3934,8 +3934,6 @@ MonoBehaviour:
   TimerOn: 0
   TimerText: {fileID: 811874581}
   HS: {fileID: 0}
-  Player: {fileID: 0}
-  MainCamera: {fileID: 0}
 --- !u!1 &1075734841
 GameObject:
   m_ObjectHideFlags: 0
@@ -7577,6 +7575,10 @@ PrefabInstance:
     - target: {fileID: 8512448570184762790, guid: 09b9cdb140174ff4e8eaf2e0b51bf800, type: 3}
       propertyPath: m_Name
       value: Saw
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512448570184762790, guid: 09b9cdb140174ff4e8eaf2e0b51bf800, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b9cdb140174ff4e8eaf2e0b51bf800, type: 3}

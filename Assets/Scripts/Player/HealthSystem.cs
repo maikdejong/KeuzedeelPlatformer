@@ -27,7 +27,6 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Wark");
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, startingHealth);
 
         if (CurrentHealth > 0)

@@ -5,9 +5,12 @@ public class UIButtons : MonoBehaviour
 {
     public void Respawn()
     {
-        GameObject.Find("GameController").GetComponent<GameController>().RespawnHelper();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
+        bool respawnHelper =  GameObject.Find("GameController").GetComponent<GameController>().RespawnHelper();
+        if (!respawnHelper)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 1;
+        }
     }
 
     public void RestartGame()

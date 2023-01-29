@@ -4,7 +4,7 @@ public class Saw : MonoBehaviour
 {
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
-    [SerializeField] private float damage;
+    private float damage = 0.5f;
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
@@ -45,6 +45,7 @@ public class Saw : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("COLSAW");
             collision.GetComponent<HealthSystem>().TakeDamage(damage);
         }
     }
