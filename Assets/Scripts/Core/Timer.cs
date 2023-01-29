@@ -11,11 +11,13 @@ public class Timer : MonoBehaviour
 
     public HealthSystem HS;
 
-    public PlayerMovement PlayerMovement;
-    public Rigidbody2D PlayerRigid;
+    public GameObject Player;
+    public GameObject MainCamera;
 
     private void Start()
     {
+        Player = GameObject.FindWithTag("Player");
+        MainCamera = GameObject.Find("Main Camera");
         TimerOn = true;
     }
 
@@ -46,8 +48,8 @@ public class Timer : MonoBehaviour
         currentTime += 1f;
 
         float seconds = Mathf.FloorToInt(currentTime % 60f);
-        
-        
+
+
         if (TimeLeft > 0f)
         {
             TimerText.text = string.Format("{0:00}", seconds);
@@ -55,8 +57,6 @@ public class Timer : MonoBehaviour
         else
         {
             TimerText.text = "Time's up!";
-            PlayerRigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            PlayerMovement.enabled = false;
             if (HS._alive)
             {
                 SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);

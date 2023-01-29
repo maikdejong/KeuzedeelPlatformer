@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private float startingHealth;
-    public float CurrentHealth { get; private set; }
+    [SerializeField] public float startingHealth;
+    public float CurrentHealth { get; set; }
 
     [SerializeField] float iFramesDuration;
     [SerializeField] int numberOfFlashes;
@@ -27,6 +27,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("Wark");
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, startingHealth);
 
         if (CurrentHealth > 0)
