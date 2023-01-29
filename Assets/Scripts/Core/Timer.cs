@@ -27,6 +27,10 @@ public class Timer : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 ChangeTimer(TimeLeft);
+                if (HS._alive == false)
+                {
+                    TimerOn = false;
+                }
             }
             else
             {
@@ -56,6 +60,7 @@ public class Timer : MonoBehaviour
             if (HS._alive)
             {
                 SceneManager.LoadScene("TimeUp", LoadSceneMode.Additive);
+                Time.timeScale = 0;
             }
         }
     }

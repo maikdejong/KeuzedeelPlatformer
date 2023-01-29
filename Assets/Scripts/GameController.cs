@@ -1,4 +1,3 @@
-using System;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -48,6 +47,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
         Player.transform.position = new Vector3(23, 5, 0);
         PlayerMovement.enabled = true;
+        Time.timeScale = 1;
         PlayerMovement.jumpPower = 15f;
         PlayerMovement.speed = 10f;
         health.TakeDamage(respawnDamage);
@@ -67,5 +67,4 @@ public class GameController : MonoBehaviour
         foreach(var root in go.scene.GetRootGameObjects())
             Destroy(root);
     }
-    
 }
