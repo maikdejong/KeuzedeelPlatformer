@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private HealthSystem health;
     private Timer Timer;
     
-    private float respawnDamage = 1;
+    private float damage = 1;
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Menu");
             return true;
         }
-        health.TakeDamage(respawnDamage);
+        health.TakeDamage(damage);
         PlayerMovement.jumpPower = 15f;
         PlayerMovement.speed = 10f;
         

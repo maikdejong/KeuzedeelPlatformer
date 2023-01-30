@@ -13,14 +13,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _body.gravityScale = 7;
     }
 
     private void Update()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         _body.velocity = new Vector2(_horizontalInput * speed, _body.velocity.y);
-        _body.gravityScale = 7;
-        
+
         if(Input.GetKey(KeyCode.UpArrow))
             Jump();
 
@@ -77,5 +77,12 @@ public class PlayerMovement : MonoBehaviour
              else
                  speed = 10f;
          }
+
+         if (collision.CompareTag("AntiGravity"))
+         {
+             Destroy(collision.gameObject);
+             _body.gravityScale = 0;
+         }
+
      }
 }

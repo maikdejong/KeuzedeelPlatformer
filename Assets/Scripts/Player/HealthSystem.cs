@@ -31,6 +31,7 @@ public class HealthSystem : MonoBehaviour
 
         if (CurrentHealth > 0)
         {
+            Debug.Log("Takedamage");
             StartCoroutine(InvulnerabilityAfterDamage());
         }
         else
@@ -52,15 +53,17 @@ public class HealthSystem : MonoBehaviour
 
     private IEnumerator InvulnerabilityAfterDamage()
     {
+        Debug.Log("IENUM1");
         Physics2D.IgnoreLayerCollision(9, 10, true);
         for (int i = 0; i < numberOfFlashes; i++)
         {
+            Debug.Log("IENUM2");
             _spriteRenderer.color = new Color(1, 0, 0, 0.6f);
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
             _spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
         }
-
+        Debug.Log("IENUM3");
         Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 }
