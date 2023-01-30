@@ -35,7 +35,6 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            GetComponent<PlayerMovement>().enabled = false;
             _alive = false;
             if (!_alive && !_isGameOver)
             {
@@ -57,9 +56,9 @@ public class HealthSystem : MonoBehaviour
         for (int i = 0; i < numberOfFlashes; i++)
         {
             _spriteRenderer.color = new Color(1, 0, 0, 0.6f);
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 3));
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
             _spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 3));
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
         }
 
         Physics2D.IgnoreLayerCollision(9, 10, false);
