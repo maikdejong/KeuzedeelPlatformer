@@ -13,8 +13,6 @@ public class GameController : MonoBehaviour
     private HealthSystem health;
     private Timer Timer;
     
-    private float damage = 1;
-
     private void Awake()
     {
         Instantiate(Player);
@@ -47,11 +45,11 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Menu");
             return true;
         }
-        health.TakeDamage(damage);
+        //health.TakeDamage(damage);
         PlayerMovement.jumpPower = 15f;
         PlayerMovement.speed = 10f;
         
-        PlayerPrefs.SetFloat("HP", health.CurrentHealth);
+        PlayerPrefs.SetFloat("HP", health.CurrentHealth - 1);
         return false;
     }
 }
