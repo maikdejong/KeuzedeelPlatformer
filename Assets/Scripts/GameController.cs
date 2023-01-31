@@ -45,7 +45,6 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Menu");
             return true;
         }
-        //health.TakeDamage(damage);
         PlayerMovement.jumpPower = 15f;
         PlayerMovement.speed = 10f;
         

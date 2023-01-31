@@ -15,16 +15,7 @@ public class UIButtons : MonoBehaviour
 
     public void RestartGame()
     {
-        DestroyAllDontDestroyOnLoadObjects();
         SceneManager.LoadScene(0);
     }
     
-    private void DestroyAllDontDestroyOnLoadObjects() {
-
-        var go = new GameObject("Sacrificial Lamb");
-        DontDestroyOnLoad(go);
-
-        foreach(var root in go.scene.GetRootGameObjects())
-            Destroy(root);
-    }
 }

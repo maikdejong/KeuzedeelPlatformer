@@ -9,11 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D _boxCollider;
     private float _horizontalInput;
 
+    private bool isUpsideDown = false;
+
     private void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _body.gravityScale = 7;
+        
     }
 
     private void Update()
@@ -24,28 +27,40 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.UpArrow))
             Jump();
 
-        if(_horizontalInput > 0.01f)
-            transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
-        else if(_horizontalInput < -0.01f)
-            transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
+        if (!isUpsideDown)
+        {
+            if(_horizontalInput > 0.01f)
+                transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
+            else if(_horizontalInput < -0.01f)
+                transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
+        }
+        else
+        {
+            if(_horizontalInput > 0.01f)
+                transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
+            else if(_horizontalInput < -0.01f)
+                transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
+        }
+        
     }
 
     private void Jump()
     {
         if(IsGrounded())
         {
-            _body.velocity = new Vector2(_body.velocity.x, jumpPower);
+            _body.velocity = new Vector2(_body.velocity.x, isUpsideDown ? -jumpPower : jumpPower);
         }
     }
 
     private bool IsGrounded()
-    {
+    { 
+        Vector2 direction = isUpsideDown ? Vector2.up : Vector2.down;
         var bounds = _boxCollider.bounds;
         RaycastHit2D raycastHit = Physics2D.BoxCast(
             bounds.center,
             bounds.size,
             0,
-            Vector2.down,
+            direction,
             0.1f,
             groundLayer);
         return raycastHit.collider != null;
@@ -81,7 +96,9 @@ public class PlayerMovement : MonoBehaviour
          if (collision.CompareTag("AntiGravity"))
          {
              Destroy(collision.gameObject);
-             _body.gravityScale = 0;
+             isUpsideDown = !isUpsideDown;
+             _body.gravityScale = isUpsideDown ? -7 : 7;
+             
          }
 
      }
