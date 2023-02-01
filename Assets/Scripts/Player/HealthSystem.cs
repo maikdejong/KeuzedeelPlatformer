@@ -38,6 +38,7 @@ public class HealthSystem : MonoBehaviour
             _alive = false;
             if (!_alive && !_isGameOver)
             {
+                Time.timeScale = 0;
                 gameObject.GetComponent<SpriteRenderer>().sprite = DeadSprite;
                 SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
                 _isGameOver = true;
