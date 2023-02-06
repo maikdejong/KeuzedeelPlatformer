@@ -509,7 +509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: -259}
+  m_AnchoredPosition: {x: 373, y: -259}
   m_SizeDelta: {x: 103.4218, y: 56.6753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745170079
@@ -706,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -87}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &825720000
@@ -1680,7 +1680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 306, y: 179.73}
+  m_AnchoredPosition: {x: 373, y: 179.73}
   m_SizeDelta: {x: 159.4725, y: -11.314201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841915420
@@ -1815,8 +1815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 306, y: -44}
-  m_SizeDelta: {x: 370.208, y: 248.7708}
+  m_AnchoredPosition: {x: 373, y: -44}
+  m_SizeDelta: {x: 961.3809, y: 376.6247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138922460
 MonoBehaviour:
@@ -1838,8 +1838,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: bij deze de gehele uitleg van de game doe ik een andere keer wel want nu
-    niet echt zin in gappie
+  m_text: "Verzamel alle batterijen om via de portal door te gaan naar het volgende
+    level. \nHaal de levels binnen de tijd en probeer niet dood te gaan. \nsave the
+    turtles."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}

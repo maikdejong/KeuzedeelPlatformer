@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _body.gravityScale = 7;
-        
     }
 
     private void Update()
@@ -24,36 +23,35 @@ public class PlayerMovement : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _body.velocity = new Vector2(_horizontalInput * speed, _body.velocity.y);
 
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
             Jump();
 
         if (!isUpsideDown)
         {
-            if(_horizontalInput > 0.01f)
+            if (_horizontalInput > 0.01f)
                 transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
-            else if(_horizontalInput < -0.01f)
+            else if (_horizontalInput < -0.01f)
                 transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
         }
         else
         {
-            if(_horizontalInput > 0.01f)
+            if (_horizontalInput > 0.01f)
                 transform.localScale = new Vector3((float)-0.5, (float)0.5, 1);
-            else if(_horizontalInput < -0.01f)
+            else if (_horizontalInput < -0.01f)
                 transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
         }
-        
     }
 
     private void Jump()
     {
-        if(IsGrounded())
+        if (IsGrounded())
         {
             _body.velocity = new Vector2(_body.velocity.x, isUpsideDown ? -jumpPower : jumpPower);
         }
     }
 
     private bool IsGrounded()
-    { 
+    {
         Vector2 direction = isUpsideDown ? Vector2.up : Vector2.down;
         var bounds = _boxCollider.bounds;
         RaycastHit2D raycastHit = Physics2D.BoxCast(
@@ -65,41 +63,40 @@ public class PlayerMovement : MonoBehaviour
             groundLayer);
         return raycastHit.collider != null;
     }
-    
+
     // POWERUPS
     private void OnTriggerEnter2D(Collider2D collision)
-     {
-         if (collision.CompareTag("Portal"))
-         {
-             jumpPower = 15f;
-             speed = 10f;
-         }
-         
-         if (collision.CompareTag("Jumpboost"))
-         {
-             Destroy(collision.gameObject);
-             if (jumpPower != 25f)
-                 jumpPower = 25f;
-             else
-                 jumpPower = 15f;
-         }
-         
-         if (collision.CompareTag("Speedboost"))
-         {
-             Destroy(collision.gameObject);
-             if (speed != 16f)
-                 speed = 16f;
-             else
-                 speed = 10f;
-         }
+    {
+        if (collision.CompareTag("Portal"))
+        {
+            jumpPower = 15f;
+            speed = 10f;
+        }
 
-         if (collision.CompareTag("AntiGravity"))
-         {
-             Destroy(collision.gameObject);
-             isUpsideDown = !isUpsideDown;
-             _body.gravityScale = isUpsideDown ? -7 : 7;
-             
-         }
+        if (collision.CompareTag("Jumpboost"))
+        {
+            Destroy(collision.gameObject);
+            if (jumpPower != 25f)
+                jumpPower = 25f;
+            else
+                jumpPower = 15f;
+        }
 
-     }
+        if (collision.CompareTag("Speedboost"))
+        {
+            Destroy(collision.gameObject);
+            if (speed != 16f)
+                speed = 16f;
+            else
+                speed = 10f;
+        }
+
+        if (collision.CompareTag("AntiGravity"))
+        {
+            Destroy(collision.gameObject);
+            isUpsideDown = !isUpsideDown;
+            _body.gravityScale = isUpsideDown ? -7 : 7;
+            _body.transform.Rotate(0,0,180);
+        }
+    }
 }

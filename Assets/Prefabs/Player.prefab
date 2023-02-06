@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  iFramesDuration: 2
-  numberOfFlashes: 3
+  iFramesDuration: 1.5
+  numberOfFlashes: 2
   _alive: 0
   DeadSprite: {fileID: 21300000, guid: 246152c4552a2c745a7b9cdda1767684, type: 3}
 --- !u!114 &7806766505702746138

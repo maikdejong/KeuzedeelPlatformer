@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -54,16 +53,15 @@ public class HealthSystem : MonoBehaviour
     private IEnumerator InvulnerabilityAfterDamage()
     {
         Physics2D.IgnoreLayerCollision(9, 10, true);
-        
+
         for (int i = 0; i < numberOfFlashes; i++)
         {
             _spriteRenderer.color = new Color(1, 0, 0, 0.6f);
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 3));
             _spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 5));
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 3));
         }
-        
+
         Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 }
- 
