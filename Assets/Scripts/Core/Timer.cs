@@ -14,7 +14,6 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         TimerOn = true;
-        Time.timeScale = 1;
     }
 
     private void FixedUpdate()
@@ -32,7 +31,6 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                Debug.Log("TIJDOP");
                 TimeLeft = 0f;
                 TimerOn = false;
             }
@@ -43,11 +41,13 @@ public class Timer : MonoBehaviour
     {
         currentTime += 1f;
 
+        //zorgt ervoor dat de timer alleen hele getallen gebruikt
         float seconds = Mathf.FloorToInt(currentTime % 60f);
 
 
         if (TimeLeft > 0f)
         {
+            //zorgt ervoor dat de timer alleen hele getallen gebruikt
             TimerText.text = string.Format("{0:00}", seconds);
         }
         else

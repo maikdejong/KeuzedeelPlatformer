@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        //checkt of speler op een ground staat en of er genoeg tijd is verstreken sinds de laatste jump.
+        //zo ja, spring!
         if (IsGrounded() && timeSinceJump > jumpCooldown)
         {
             _body.velocity = new Vector2(_body.velocity.x, isUpsideDown ? -jumpPower : jumpPower);
@@ -58,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
+        //Boxcast naar onder voor groundcheck. Boxcast naar boven als Player upside down is 
         Vector2 direction = isUpsideDown ? Vector2.up : Vector2.down;
         var bounds = _boxCollider.bounds;
         RaycastHit2D raycastHit = Physics2D.BoxCast(

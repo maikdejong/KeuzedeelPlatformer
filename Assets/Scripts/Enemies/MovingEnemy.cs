@@ -17,11 +17,14 @@ public class MovingEnemy : MonoBehaviour
 
     private void Update()
     {
+        //Movement logica
         if (movingLeft)
         {
             if (transform.position.x > leftEdge)
             {
-                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y,
+                transform.position = new Vector3(
+                    transform.position.x - speed * Time.deltaTime,
+                    transform.position.y,
                     transform.position.z);
             }
             else
@@ -33,7 +36,9 @@ public class MovingEnemy : MonoBehaviour
         {
             if (transform.position.x < rightEdge)
             {
-                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y,
+                transform.position = new Vector3(
+                    transform.position.x + speed * Time.deltaTime,
+                    transform.position.y,
                     transform.position.z);
             }
             else

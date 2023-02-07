@@ -5,6 +5,8 @@ public class UIButtons : MonoBehaviour
 {
     public void Respawn()
     {
+        //checkt in de respawnHelper functie in GameController script, of de player nog 'leeft'
+        //als de player leeft: !respawnHelper
         bool respawnHelper = GameObject.Find("GameController").GetComponent<GameController>().RespawnHelper();
         if (!respawnHelper)
         {

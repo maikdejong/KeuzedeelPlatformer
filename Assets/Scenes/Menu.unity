@@ -1840,8 +1840,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Oh nee! De boze antiklimaatmannen hebben lege batterijen in de natuur
     gegooit!\nRuim alle batterijen op om het milieu te redden.\nPas als je alle batterijen
-    gevonden hebt, mag je door  naar het volgende level. \nHaal de levels binnen
-    de tijd en probeer niet dood te gaan!\n#savetheturtles."
+    gevonden hebt, mag je door naar het volgende level. \nHaal de levels binnen de
+    tijd en probeer niet dood te gaan!\n#savetheturtles."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}

@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            //Collision met player -> volgende scene
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(sceneIndex + 1, LoadSceneMode.Single);
         }

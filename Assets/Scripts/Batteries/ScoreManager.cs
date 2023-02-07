@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     void SpawnPortal()
     {
+        //Spawn portal als score 3 is en dus 3 batterijen zijn verzameld
         if (_score == 3)
         {
             _portal.SetActive(true);
