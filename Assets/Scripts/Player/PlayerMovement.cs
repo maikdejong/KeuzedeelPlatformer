@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D _boxCollider;
     private float _horizontalInput;
 
-    private bool isUpsideDown = false;
+    private float jumpCooldown = 0.5f;
+    private float timeSinceJump;
+
+    private bool isUpsideDown;
 
     private void Awake()
     {
@@ -23,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _body.velocity = new Vector2(_horizontalInput * speed, _body.velocity.y);
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             Jump();
 
         if (!isUpsideDown)
@@ -40,13 +43,16 @@ public class PlayerMovement : MonoBehaviour
             else if (_horizontalInput < -0.01f)
                 transform.localScale = new Vector3((float)0.5, (float)0.5, 1);
         }
+
+        timeSinceJump += Time.deltaTime;
     }
 
     private void Jump()
     {
-        if (IsGrounded())
+        if (IsGrounded() && timeSinceJump > jumpCooldown)
         {
             _body.velocity = new Vector2(_body.velocity.x, isUpsideDown ? -jumpPower : jumpPower);
+            timeSinceJump = 0f;
         }
     }
 
@@ -85,10 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Speedboost"))
         {
             Destroy(collision.gameObject);
-            if (speed != 16f)
-                speed = 16f;
-            else
-                speed = 10f;
+            speed = 16f;
         }
 
         if (collision.CompareTag("AntiGravity"))
